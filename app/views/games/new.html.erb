@@ -1,0 +1,32 @@
+<!-- app/views/games/new.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Game</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>New Game</h1>
+
+    <div class="row">
+      <% @letters.each do |letter| %>
+        <div class="col-1 text-center border p-3 m-2">
+          <%= letter %>
+        </div>
+      <% end %>
+    </div>
+
+    <form action="/score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters.join('') %>
+
+  <label for="suggestion">Suggestion:</label>
+  <input type="text" id="suggestion" name="suggestion" required>
+
+  <input type="submit" value="Submit">
+</form>
+  </div>
+</body>
+</html>

@@ -1,6 +1,10 @@
+# config/routes.rb
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/new', to: 'games#new'
+  get '/score', to: 'games#score'
+  post '/score', to: 'games#score'
+  get '/result', to: 'games#result'
 
-  # Defines the root path route ("/")
+  # Define the root path route ("/")
   # root "articles#index"
 end
